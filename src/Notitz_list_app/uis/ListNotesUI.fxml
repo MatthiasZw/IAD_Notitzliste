@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="407.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Notitz_list_app.controllers.ListNotesCtr">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="407.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Notitz_list_app.controllers.ui.ListNotesCtr">
    <children>
       <AnchorPane prefHeight="69.0" prefWidth="377.0" style="-fx-background-color: lightgrey;">
          <children>
@@ -32,13 +31,16 @@
       <AnchorPane prefHeight="46.0" prefWidth="407.0">
          <children>
             <TextField fx:id="txtSearchNote" layoutX="14.0" layoutY="11.0" prefHeight="25.0" prefWidth="229.0" promptText="Suchen" />
-            <Label fx:id="lblCountNotes" layoutX="282.0" layoutY="5.0" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: darkgrey; -fx-background-radius: 20;" text="     Hinweise" />
+            <Label fx:id="lblCountNotes" layoutX="282.0" layoutY="5.0" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: darkgrey; -fx-background-radius: 20;" text="Hinweise" textAlignment="CENTER">
+               <font>
+                  <Font name="Webdings" size="14.0" />
+               </font></Label>
          </children>
       </AnchorPane>
       <TableView fx:id="tbvNotes" prefHeight="351.0" prefWidth="407.0">
         <columns>
-          <TableColumn prefWidth="148.0" text="Titel" />
-          <TableColumn prefWidth="258.0" text="Beschreibung" />
+          <TableColumn fx:id="cltitel" prefWidth="148.0" text="Titel" />
+          <TableColumn fx:id="clldes" prefWidth="258.0" text="Beschreibung" />
         </columns>
       </TableView>
       <AnchorPane prefHeight="68.0" prefWidth="407.0">

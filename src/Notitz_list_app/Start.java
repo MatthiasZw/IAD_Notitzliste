@@ -11,7 +11,7 @@ public class Start extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource(FXML_Location.EDIT.getLocation()));
+        Parent root = FXMLLoader.load(FXML_Location.LIST.getPage());
         primaryStage.setTitle("Notitzprojekt");
         primaryStage.setResizable(false);
         primaryStage.setScene(new Scene(root, 400, 600));

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="407.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Notitz_list_app.controllers.EditNotesCtr">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="407.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Notitz_list_app.controllers.ui.EditNotesCtr">
    <children>
       <AnchorPane prefHeight="69.0" prefWidth="377.0" style="-fx-background-color: lightgrey;">
          <children>

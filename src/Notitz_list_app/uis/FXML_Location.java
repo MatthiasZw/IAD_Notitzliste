@@ -1,17 +1,20 @@
 package Notitz_list_app.uis;
 
-public enum FXML_Location {
-    LIST("../Notitz_list_app/uis/ListNotesUi.fxml"),
+import java.net.URL;
 
-    EDIT("../Notitz_list_app/uis/EditNotesUi.fxml");
+public enum FXML_Location {
+    LIST("ListNotesUi.fxml"),
+
+    EDIT("EditNotesUi.fxml");
 
     private String location;
+
     FXML_Location(String location){
         this.location=location;
 
     }
-    public String getLocation(){
-        return this.location;
+    public URL getPage(){
+        return getClass().getResource(this.location);
 
     }
 }
