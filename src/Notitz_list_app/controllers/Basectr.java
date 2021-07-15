@@ -16,13 +16,11 @@ import java.io.IOException;
 import java.net.URL;
 
 public abstract class Basectr {
-    protected static ObservableList<Note> data = FXCollections.observableArrayList(
-            new Note("Abstand","Vorsicht"),new Note("Hallo","Einkaufen"),
-            new Note("Gitarre","Gibson"),new Note("Fahrrad","Reifen"));
-
-
+    protected static ObservableList<Note> data = FXCollections.observableArrayList();
 
 protected static Note editNote =null;
+
+
 
     protected void navigateto (Event event, URL location) throws IOException {
 

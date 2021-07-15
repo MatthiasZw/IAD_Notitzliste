@@ -2,6 +2,9 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -49,5 +52,27 @@
             <Button layoutX="312.0" layoutY="21.0" mnemonicParsing="false" onAction="#onEditNote" prefHeight="25.0" prefWidth="81.0" style="-fx-background-color: pink; -fx-background-radius: 20;" text="Bearbeiten" />
          </children>
       </AnchorPane>
+      <MenuBar fx:id="mnbListview">
+        <menus>
+          <Menu mnemonicParsing="false" text="Datei">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#oneditnew" text="Neu" />
+                  <MenuItem mnemonicParsing="false" onAction="#onOpen" text="Open" />
+                  <MenuItem mnemonicParsing="false" onAction="#onSave2" text="Speichern" />
+                  <MenuItem mnemonicParsing="false" onAction="#onClose" text="Beenden" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Fenster">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#oneditnew" text="Neu und Bearbeiten" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Über...">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About@email.de" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
    </children>
 </VBox>

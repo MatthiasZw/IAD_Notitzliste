@@ -25,8 +25,15 @@ public class EditNotesCtr extends Basectr implements Initializable {
     @FXML
     private TextArea txaDescription;
 
+
+
+
+
+
+
     @FXML
     void onCancel(ActionEvent event) throws IOException {
+        editNote=null;
         super.navigateto(event, FXML_Location.LIST.getPage());
 
     }
@@ -34,15 +41,12 @@ public class EditNotesCtr extends Basectr implements Initializable {
     @FXML
     void onDelete(ActionEvent event) {
 
-
-
         final Optional<ButtonType> result = showConfirmdialog();
         if (result.isPresent() && result.get() == ButtonType.OK) {
+            txaDescription.clear();
+            txtTitel.clear();
 
-        txaDescription.clear();
-        txtTitel.clear();
-
-    }}
+        }}
 
     @FXML
     void onList(ActionEvent event) throws IOException {
@@ -51,15 +55,13 @@ public class EditNotesCtr extends Basectr implements Initializable {
 
     @FXML
     void onSave(ActionEvent event) throws IOException {
-
         if( nonNull( editNote)) data.remove(editNote);
         if(txtTitel.getText().trim().equals("") || txaDescription.getText().trim().equals(""))
         {
-            // Alert
-            // return
-        }
+            // Alert// return
+            data.remove(new Note(txtTitel.getText(), txaDescription.getText()));
+        } else
         data.add(new Note(txtTitel.getText(), txaDescription.getText()));
-
 
         super.navigateto(event, FXML_Location.LIST.getPage());
 
@@ -70,12 +72,8 @@ public class EditNotesCtr extends Basectr implements Initializable {
         if (editNote != null) {
             txtTitel.setText(editNote.getTitle());
             txaDescription.setText(editNote.getDescription());
-
-
         }
     }private Optional<ButtonType> showConfirmdialog() {
         return new Alert(Alert.AlertType.CONFIRMATION, "Wirklich löschen?").showAndWait();
-
-
     }
 }
