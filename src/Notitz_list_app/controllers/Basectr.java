@@ -22,7 +22,7 @@ public abstract class Basectr {
 
 
 
-protected static Note item=null;
+protected static Note editNote =null;
 
     protected void navigateto (Event event, URL location) throws IOException {
 

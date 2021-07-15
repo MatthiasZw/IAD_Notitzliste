@@ -8,16 +8,13 @@ import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.function.Predicate;
 
 public class ListNotesCtr extends Basectr implements Initializable {
 
@@ -41,8 +38,13 @@ public class ListNotesCtr extends Basectr implements Initializable {
         @FXML
         void onDeleteNote(ActionEvent event) {
             if (getNoteItems()!=null){
-                data.remove(getNoteItems());
-            }
+
+                final Optional<ButtonType> result = showConfirmdialog();
+                if (result.isPresent() && result.get() == ButtonType.OK) {
+
+                    data.remove(getNoteItems());
+                }
+                }
             //geht auch:
             /*if (tbvNotes.getSelectionModel().getSelectedItems().size()>0){
                 data.remove(tbvNotes.getSelectionModel().getSelectedItem());
@@ -52,7 +54,7 @@ public class ListNotesCtr extends Basectr implements Initializable {
         @FXML
         void onEditNote(ActionEvent event) throws IOException {
             if (getNoteItems()!=null)
-                item= getNoteItems();
+                editNote = getNoteItems();
 
 
                 super.navigateto(event,FXML_Location.EDIT.getPage());
@@ -86,4 +88,10 @@ public class ListNotesCtr extends Basectr implements Initializable {
             return tbvNotes.getSelectionModel().getSelectedItem();
 
     }
+
+            private Optional<ButtonType> showConfirmdialog() {
+                return new Alert(Alert.AlertType.CONFIRMATION, "Wollen Sie wirklich löschen?").showAndWait();
+
+
+            }
 }
