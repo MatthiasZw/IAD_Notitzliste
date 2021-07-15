@@ -21,10 +21,7 @@ import javafx.stage.Stage;
 import javax.swing.*;
 import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import static java.util.Objects.nonNull;
 
@@ -48,8 +45,16 @@ private SelectionModel<Note> selectionModel;
             try(BufferedReader br = new BufferedReader(new FileReader(open.toString()))) {
 
                 List<Note> templist = new ArrayList<>();
+                br.readLine();
+                Scanner sc = new Scanner(br);
+                while (sc.hasNextLine()){
+                    var tupel = sc.nextLine().split(";");
+                     templist.add (new Note(tupel[0],tupel[1]));
+
+                }
 
                 data= FXCollections.observableList(templist);
+                updateListview();
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -105,7 +110,7 @@ private SelectionModel<Note> selectionModel;
 
                     data.remove(getNoteItems());
 
-                   // selectionModel.clearSelection();
+                   //selectionModel.clearSelection();
 
 
                 }
@@ -141,20 +146,25 @@ private SelectionModel<Note> selectionModel;
             clldes.setCellValueFactory(new PropertyValueFactory<>("description"));
 
 
+        FilteredList<Note> filteredData = updateListview();
 
-                FilteredList<Note> filteredData = new FilteredList(data);
-                txtSearchNote.setOnKeyReleased(k -> {
-                    filteredData.setPredicate(n -> {
-                        return n.getTitle().contains(txtSearchNote.getText()) ||
-                                n.getDescription().contains(txtSearchNote.getText());
-
-                    });
-                });
-
-                tbvNotes.setItems(filteredData);
-
-            lblCountNotes.textProperty().bind(Bindings.createStringBinding(()->filteredData.size()+(filteredData.size()==1? "Notitz": "Notitzen")));
+        lblCountNotes.textProperty().bind(Bindings.createStringBinding(()->filteredData.size()+(filteredData.size()==1? "Notitz": "Notitzen")));
     }
+
+    private FilteredList<Note> updateListview() {
+        FilteredList<Note> filteredData = new FilteredList(data);
+        txtSearchNote.setOnKeyReleased(k -> {
+            filteredData.setPredicate(n -> {
+                return n.getTitle().contains(txtSearchNote.getText()) ||
+                        n.getDescription().contains(txtSearchNote.getText());
+
+            });
+        });
+
+        tbvNotes.setItems(filteredData);
+        return filteredData;
+    }
+
     public Note getNoteItems(){
             return tbvNotes.getSelectionModel().getSelectedItem();
 
