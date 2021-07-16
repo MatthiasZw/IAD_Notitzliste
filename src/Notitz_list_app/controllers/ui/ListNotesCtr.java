@@ -25,53 +25,75 @@ import java.util.*;
 
 import static java.util.Objects.nonNull;
 
-public class ListNotesCtr extends Basectr implements Initializable {
+public class ListNotesCtr extends Basectr  implements Initializable {
 
 
-private SelectionModel<Note> selectionModel;
+    private SelectionModel<Note> selectionModel;
 
-        @FXML
-        private TextField txtSearchNote;
+    @FXML
+    private TextField txtSearchNote;
 
 
     @FXML
     void onOpen(ActionEvent event) throws FileNotFoundException {
         FileChooser fodlg = new FileChooser();
         fodlg.getExtensionFilters().add(
-                new FileChooser.ExtensionFilter("Iad Notitzen", "*.csv")
-         );
+                new FileChooser.ExtensionFilter("Iad Notitzen", "*.*")
+        );
         File open = fodlg.showOpenDialog(mnbListview.getScene().getWindow());
-        if (nonNull(open)){
-            try(BufferedReader br = new BufferedReader(new FileReader(open.toString()))) {
+        if (nonNull(open)) {
+            try (BufferedReader br = new BufferedReader(new FileReader(open.toString()))) {
 
                 List<Note> templist = new ArrayList<>();
                 br.readLine();
                 Scanner sc = new Scanner(br);
-                while (sc.hasNextLine()){
+                while (sc.hasNextLine()) {
                     var tupel = sc.nextLine().split(";");
-                     templist.add (new Note(tupel[0],tupel[1]));
-
+                    templist.add(new Note(tupel[0], tupel[1]));
                 }
 
-                data= FXCollections.observableList(templist);
+                data = FXCollections.observableList(templist);
                 updateListview();
 
             } catch (IOException e) {
                 e.printStackTrace();
-            } ;
+            }
+            ;
         }
 
 
     }
+
     @FXML
     void onClose(ActionEvent event) {
+        System.exit(72);
 
     }
 
     @FXML
-    void onSave2(ActionEvent event) {
+    void onSave2(ActionEvent event) throws IOException {
 
-    }
+        FileChooser fodlg = new FileChooser();
+        fodlg.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("Iad Notitzen", "*.csv"));
+        String close = fodlg.showOpenDialog(mnbListview.getScene().getWindow()).toString();
+
+        FileWriter writer = new FileWriter(close);
+        writer.append("titel");
+        writer.append(';');
+        writer.append("description");
+        writer.append('\n');
+        for (Note n :data) {
+            writer.append(n.getTitle());
+            writer.append(';');
+            writer.append(n.getDescription());
+            writer.append('\n');
+        }
+        writer.flush();
+        writer.close();
+}
+
+
 
         @FXML
         private Label lblCountNotes;

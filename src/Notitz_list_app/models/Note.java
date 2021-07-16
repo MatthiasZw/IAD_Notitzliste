@@ -3,6 +3,8 @@ package Notitz_list_app.models;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.io.Serializable;
+
 public class Note {
     public StringProperty title = new SimpleStringProperty();
     public StringProperty description = new SimpleStringProperty();
