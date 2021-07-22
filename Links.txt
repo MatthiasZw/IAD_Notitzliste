@@ -1,0 +1,15 @@
+https://developer.android.com/studio/intro/migrate
+
+http://tools.android.com/tech-docs/new-build-system/migrating-from-intellij-projects
+
+http://tools.android.com/tech-docs/new-build-system/migrating-from-intellij-projects
+
+https://stackoverflow.com/questions/16606727/import-project-from-intellij-idea-to-android-studio
+
+https://developer.android.com/jetpack/androidx/migrate
+
+https://stackoverflow.com/questions/44538097/export-javafx-project-to-android
+
+https://www.bing.com/search?q=android+studio&form=ANNTH1&refig=1575c6d701e0494b95ee4c1c376b0d84
+
+https://developer.android.com/studio
